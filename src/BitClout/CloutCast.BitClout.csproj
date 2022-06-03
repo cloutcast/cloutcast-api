@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>CloutCast.BitClout</AssemblyName>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<Import Project="$(SolutionDir)\src\common.props" />
+
+	<ItemGroup>
+
+		<PackageReference Include="FluentValidation" Version="10.1.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
+		
+		<PackageReference Include="MediatR" Version="9.0.0" />
+		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="7.2.0" />
+		
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.16" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.NewtonsoftJson" Version="3.1.16" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		
+		<PackageReference Include="Polly" Version="7.2.2" />
+		<PackageReference Include="RestSharp" Version="106.11.7" />
+		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.11.7" />
+		<PackageReference Include="System.Runtime.Caching" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)\src\common.assembly.info.cs" Link="Properties\common.assembly.info.cs" />
+		<ProjectReference Include="$(SolutionDir)\src\Core\CloutCast.Core.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\Utilities\CloutCast.Utilities.csproj" />
+	</ItemGroup>
+
+</Project>

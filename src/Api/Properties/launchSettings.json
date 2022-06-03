@@ -1,0 +1,37 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:62368",
+      "sslPort": 44394
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "CloutCast": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+
+        "AUTHENTICATION__AUDIENCE": "sweet-ui",
+        "AUTHENTICATION__ISSUER": "CloutCast.API",
+        "AUTHENTICATION__SIGNINGKEY": "A_Cl0utC@st_Pr0duction",
+
+        "CONNECTIONSTRINGS__MAIN": "server=cloutcast.database.windows.net;database=cloutcast-prod;uid=clout;password=6CRQ9W9PQtTbPU8oL7mT"
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    }
+  }
+}

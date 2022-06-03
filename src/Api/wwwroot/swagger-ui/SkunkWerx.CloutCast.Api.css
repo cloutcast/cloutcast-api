@@ -1,0 +1,31 @@
+﻿.swagger-ui .topbar {
+    background: #cecece;
+    /* Old browsers */
+    background: #cecece;
+    /* Old browsers  */
+    background: -moz-linear-gradient(to right, #cecece 0%, #000 41%) !important;
+    /* FF3.6+ */
+    background: -webkit-linear-gradient(to right, #cecece 0%, #000 41%) !important;
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(to right, #cecece 0%, #000 41%) !important;
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(to right, #cecece 0%, #000 41%) !important;
+    /* IE10+ */
+    background: linear-gradient(to right, #ababab 0%, #111 41%) !important;
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$left', endColorstr='$right', GradientType=0);
+    /* IE6-9 */
+}
+
+.swagger-ui .topbar .download-url-wrapper .select-label select {
+    border: 2px solid #cecece;
+}
+
+.swagger-ui .info .title small.version-stamp {
+    background-color: #cecece !important;
+}
+
+.swagger-ui table tbody tr td:first-of-type {
+    min-width: 10em;
+}
+

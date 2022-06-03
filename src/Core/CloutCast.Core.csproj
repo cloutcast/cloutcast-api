@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>CloutCast.Core</AssemblyName>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<Import Project="$(SolutionDir)\src\common.props" />
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="10.1.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)\src\common.assembly.info.cs" Link="Properties\common.assembly.info.cs" />
+		<ProjectReference Include="$(SolutionDir)\src\Utilities\CloutCast.Utilities.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>CloutCast.Utilities</AssemblyName>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<Import Project="$(SolutionDir)\src\common.props" />
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.2.0" />
+		<PackageReference Include="Dapper" Version="2.0.90" />
+		<PackageReference Include="Easy.Common" Version="3.8.7" />
+		<PackageReference Include="FluentValidation" Version="10.1.0" />
+		<PackageReference Include="log4net" Version="2.0.12" />
+		<PackageReference Include="MediatR" Version="9.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	</ItemGroup>
+
+</Project>

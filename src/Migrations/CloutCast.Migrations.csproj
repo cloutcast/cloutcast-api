@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<PropertyGroup>
+		<AssemblyName>CloutCast.Migrations</AssemblyName>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+	
+	<Import Project="$(SolutionDir)\src\common.props" />
+	
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)\src\common.assembly.info.cs" Link="Properties\common.assembly.info.cs" />
+		<ProjectReference Include="$(SolutionDir)\src\Core\CloutCast.Core.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\Utilities\CloutCast.Utilities.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="FluentMigrator" Version="3.2.15" />
+		<PackageReference Include="FluentMigrator.Runner" Version="3.2.15" />
+		<PackageReference Include="FluentMigrator.Console" Version="3.2.15" />
+		<PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
+		<PackageReference Include="MSBuildTasks" Version="1.5.0.235" />
+	</ItemGroup>
+
+
+	<Target Name="CopyMigrations" AfterTargets="Build">
+		<ItemGroup>
+			<Migrations Include="$(SolutionDir)packages\fluentmigrator.console\3.2.15\tools\net461\x86\*.*"/>
+			<Migrations Include="$(SolutionDir)bin\netstandard2.0\CloutCast.Core.dll"/>
+			<Migrations Include="$(SolutionDir)bin\netstandard2.0\CloutCast.Migrations.dll"/>
+			<Migrations Include="$(SolutionDir)bin\netstandard2.0\CloutCast.Utilities.dll"/>
+		</ItemGroup>
+
+		<Copy
+			SourceFiles="@(Migrations)"
+			DestinationFolder="$(TargetDir)\FolderToZip\"
+			SkipUnchangedFiles="false" />
+	</Target>
+
+	<Target Name="ZipOutputPath" AfterTargets="CopyMigrations">
+		<ZipDirectory
+			SourceDirectory="$(TargetDir)\FolderToZip\"
+			DestinationFile="$(SolutionDir)bin\clout.cast.migrations.zip"
+			Overwrite="true"/>
+	</Target>
+
+</Project>

@@ -1,0 +1,12 @@
+<!-- core.props file -->
+<Project>
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>CloutCast</RootNamespace>    	
+    <LangVersion>8.0</LangVersion>
+
+    <SourceDir>$(SolutionDir)\src</SourceDir>
+    <OutputPath>$(SolutionDir)\bin\</OutputPath>
+  </PropertyGroup>
+
+</Project>

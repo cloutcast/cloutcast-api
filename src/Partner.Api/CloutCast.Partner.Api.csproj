@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<AssemblyName>CloutCast.Partner.Api</AssemblyName>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>814ddcca-53e4-406c-91e3-b142a107f667</UserSecretsId>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<RootNamespace>CloutCast</RootNamespace>
+		<LangVersion>8.0</LangVersion>
+		<NoWarn>1701;1702;1591</NoWarn>
+
+		<SourceDir>$(SolutionDir)\src</SourceDir>
+		<OutputPath>$(SolutionDir)\bin\</OutputPath>
+
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute> 
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)\src\common.assembly.info.cs" Link="Properties\common.assembly.info.cs" />
+		<ProjectReference Include="$(SolutionDir)\src\Core\CloutCast.Core.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\BitClout\CloutCast.BitClout.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\Logic\CloutCast.Logic.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\Utilities\CloutCast.Utilities.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)\src\Api\ApiHelper.cs" Link="ApiHelper.cs" />
+
+		<Compile Include="$(SolutionDir)\src\Api\Controllers\AuthenticationController.cs" Link="Controllers\AuthenticationController.cs" />
+
+		<Compile Include="$(SolutionDir)\src\Api\Middleware\ApiKeyMiddleware.cs" Link="Middleware\ApiKeyMiddleware.cs" />
+		<Compile Include="$(SolutionDir)\src\Api\Middleware\ErrorHandlerMiddleware.cs" Link="Middleware\ErrorHandlerMiddleware.cs" />
+		<Compile Include="$(SolutionDir)\src\Api\Middleware\ResponseEnvelopeResultExecutor.cs" Link="Middleware\ResponseEnvelopeResultExecutor.cs" />
+
+		<Compile Include="$(SolutionDir)\src\Api\Models\CreatePromotionModel.cs" Link="Models\CreatePromotionModel.cs" />
+
+		<Compile Include="$(SolutionDir)\src\Api\Options\AuthenticationOption.cs" Link="Options\AuthenticationOption.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.2.0" />
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+		<PackageReference Include="Autofac.log4net" Version="6.0.1" />
+
+		<PackageReference Include="FluentValidation.AspNetCore" Version="10.1.0" />
+
+		<PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
+
+		<PackageReference Include="log4net" Version="2.0.12" />
+		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="7.2.0" />
+
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.16" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.16" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.NewtonsoftJson" Version="3.1.16" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="3.1.0" />
+		<PackageReference Include="NewRelic.Agent" Version="8.39.2" />
+
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.6.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="wwwroot\swagger-ui\CloutCast.Partner.Api.css" />
+		<Content Update="wwwroot\swagger-ui\CloutCast.Partner.Api.css">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		
+		<None Update="CloutCast.Partner.Api.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(GenerateRuntimeConfigurationFiles)' == 'true'">
+		<None Include="$(TestRuntimeConfigurationFile)" Condition="Exists('$(TestRuntimeConfigurationFile)')" Link="$(TargetName).exe.config" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+		<ContentWithTargetPath Include="$(ProjectDepsFilePath)" Condition="'$(TargetsNetCoreApp)' == 'true' and '$(GenerateDependencyFile)' == 'true'" CopyToOutputDirectory="PreserveNewest" TargetPath="$(ProjectDepsFileName)" />
+		<ContentWithTargetPath Include="$(ProjectRuntimeConfigFilePath)" Condition="'$(TargetsNetCoreApp)' == 'true'" CopyToOutputDirectory="PreserveNewest" TargetPath="$(ProjectRuntimeConfigFileName)" />
+	</ItemGroup>
+
+	<Target Name="_SetRuntimeFrameworksForTestAssemblies" Condition="'$(SelfContained)' != 'true' and '$(MSBuildProjectExtension)' != '.depproj'" BeforeTargets="GenerateBuildDependencyFile">
+		<ItemGroup>
+			<RuntimeFramework Include="Microsoft.NETCore.App" Version="$(ProductVersion)" />
+		</ItemGroup>
+	</Target>
+
+</Project>

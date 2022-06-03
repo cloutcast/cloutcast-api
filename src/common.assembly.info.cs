@@ -1,0 +1,6 @@
+﻿[assembly: System.Reflection.AssemblyCompany("CloutCast, Inc")]
+[assembly: System.Reflection.AssemblyCulture("")]
+[assembly: System.Reflection.AssemblyProduct("Clout.Cast")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright © CloutCast Inc 2021 - 2022")]
+[assembly: System.Runtime.InteropServices.ComVisible(false)]
+[assembly: System.Reflection.AssemblyVersion("0.0.2.3345")]

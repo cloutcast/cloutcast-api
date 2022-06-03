@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>CloutCast.Logic</AssemblyName>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<Import Project="$(SolutionDir)\src\common.props" />
+
+	<ItemGroup>
+	  <PackageReference Include="Dapper" Version="2.0.90" />
+	  <PackageReference Include="FluentValidation" Version="10.1.0" />
+	  <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
+
+	  <PackageReference Include="MediatR" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.16" />
+
+	  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.0" />
+	  <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
+	  <PackageReference Include="System.IO.Abstractions" Version="13.2.31" />
+	  <PackageReference Include="System.Runtime.Caching" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)\src\common.assembly.info.cs" Link="Properties\common.assembly.info.cs" />
+		<ProjectReference Include="$(SolutionDir)\src\Core\CloutCast.Core.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\BitClout\CloutCast.BitClout.csproj" />
+		<ProjectReference Include="$(SolutionDir)\src\Utilities\CloutCast.Utilities.csproj" />
+	</ItemGroup>
+
+</Project>
